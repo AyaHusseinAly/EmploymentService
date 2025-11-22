@@ -1,26 +1,31 @@
 module.exports = (sequelize, DataTypes) => {
-    const salary = sequelize.define('salary', {
-        'id': {
+    const Salary = sequelize.define('Salary', {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            field: 'ID'
         },
-        'year': {
-            type: DataTypes.INTEGER
+        year: {
+            type: DataTypes.INTEGER,
+            field: 'Year'
         },
-        'month': {
-            type: DataTypes.INTEGER
+        month: {
+            type: DataTypes.INTEGER,
+            field: 'Month'
         },
-        'salary': {
-            type: DataTypes.FLOAT
+        salary: {
+            type: DataTypes.FLOAT,
+            field: 'Salary'
         },
-        'userId': {
-            type: DataTypes.INTEGER
+        userId: {
+            type: DataTypes.INTEGER,
+            field: 'UserID'
         }
     }, {
         tableName: 'Salaries',
         timestamps: false
     });
 
-    return salary;
+    return Salary;
 };
