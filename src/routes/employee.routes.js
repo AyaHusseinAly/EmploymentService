@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const empController = require('../controllers/employee.controller');
-const validator = require('../core/Validator');
+const validator = require('../core/validator');
 
 // POST /api/GetEmpStatus
 router.post(
