@@ -22,21 +22,21 @@ class ProcessStatus {
         }
 
         // Average
-        const average = sum / salaries.length;
+        const averageSalary = sum / salaries.length;
 
         // Highest
-        const highest = Math.max(...adjustedSalaries.map(s => s.adjustedSalary));
+        const highestSalary = Math.max(...adjustedSalaries.map(s => s.adjustedSalary));
 
         // status
         let status = 'RED';
-        if (average > 2000) status = 'GREEN';
-        else if (average === 2000) status = 'ORANGE';
+        if (averageSalary > 2000) status = 'GREEN';
+        else if (averageSalary === 2000) status = 'ORANGE';
 
         return {
-            HighestSalary: highest,
-            AverageSalary: average,
-            Status: status,
-            LastUpdated: new Date().toISOString()
+            highestSalary,
+            averageSalary,
+            status,
+            lastUpdated: new Date().toISOString()
         };
     }
 }

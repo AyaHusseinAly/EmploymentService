@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const DataAccess = require('../core/dataAccess');
 const ProcessStatus = require('../core/processStatus');
+const EmpInfo = require('../core/empInfo');
 
 exports.getEmpStatus = async(req, res, next) => {
     try {
@@ -25,14 +26,12 @@ exports.getEmpStatus = async(req, res, next) => {
         }
 
         const salaryData = ProcessStatus.calculate(user.salaries);
-        res.json({
-            EmployeeName: user.username,
-            NationalNumber: user.nationalNumber,
-            IsActive: user.isActive,
-            ...salaryData
-        });
+        const empInfo = new EmpInfo(user, salaryData);
+
+        res.status(200).json(empInfo.toJSON());
+
     } catch (err) {
-        // pass errorHandler
+        // pass to errorHandler
         next(err)
     }
 };
