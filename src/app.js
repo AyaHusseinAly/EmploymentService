@@ -1,10 +1,11 @@
 const express = require('express');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const hpp = require('hpp');
+const rateLimit = require('express-rate-limit');
+const empRoutes = require('./routes/employee.routes');
+const errorHandler = require('./middlewares/errorHandler');
 
-const DataAccess = require('./core/DataAccess');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -13,29 +14,19 @@ app.use(helmet());
 app.use(hpp());
 app.use(cors());
 
+// setting max 100 requests per IP,  15 min window
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 min
-    max: 100, // requests per IP
+    windowMs: 15 * 60 * 1000,
+    max: 100,
 });
 app.use(limiter);
 
 // parsing payload
 app.use(express.json());
+app.use('/api', empRoutes);
 
-app.post('/api/GetEmpStatus', async(req, res) => {
-    try {
-        const { nationalNumber } = req.body;
-        const user = await DataAccess.getUserWithSalaries(nationalNumber);
-
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+// global error handler
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
