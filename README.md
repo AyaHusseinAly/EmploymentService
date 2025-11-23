@@ -1,10 +1,10 @@
 ## Employee Status and Salary Statistics Web Service
 This project provides an API endpoint to retrieve employee information and salary statistics.  
-### Description of the architecture:
+### ➤ Description of the architecture:
 Modular Node.js structure with separation of concerns routes, controllers, core logic, models, config, and middlewares.
 project is designed for scalability, and maintainability.
 
-### Setup & execution instructions:
+### ➤ Setup & execution instructions:
 
 #### 1. Setting Environment Variables
 
@@ -37,3 +37,13 @@ Run the SQL files `./db/schema.sql` and `./db/seed.sql` to initialize the databa
 
 
 then import the provided Postman Collection `GetEmpStatus.postman_collection.json` and test the end point for different cases
+
+### ➤ Implemented bonus features
+##### Logger
+Records all important events (INFO, WARN, ERROR) into Log database table.
+##### API Token Middleware
+Validates the presence and correctness of an API token in request headers. If missing or invalid,  respond with 401 Unauthorized.
+##### Retry Mechanism
+Wraps DataAccess function with implemented util function withRetry. it provides 3 retries on failure before throwing an error. 
+##### Caching Layer (In‑Memory)
+Simple in‑memory cache using simple Map DS with default 1 min TTL to reduces DB calls.
