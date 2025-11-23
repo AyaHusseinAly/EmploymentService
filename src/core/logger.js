@@ -1,11 +1,15 @@
-const DataAccess = require('./dataAccess');
+const models = require('../models'); // modeuls/index.js
 
 const Logger = {
     async log(level, message, context = {}) {
         try {
-            await DataAccess.saveLog(level, message, context);
+            await models.log.create({
+                Level: level,
+                Message: message,
+                Context: context
+            });
         } catch (err) {
-            console.error('Failed to write log to DB:', err.message);
+            console.error('Failed to save log:', err.message);
         }
     }
 };
