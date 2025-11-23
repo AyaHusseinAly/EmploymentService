@@ -1,10 +1,10 @@
 ## Employee Status and Salary Statistics Web Service
 This project provides an API endpoint to retrieve employee information and salary statistics.  
-### Description of the architecture.
+### Description of the architecture:
 Modular Node.js structure with separation of concerns routes, controllers, core logic, models, config, and middlewares.
 project is designed for scalability, and maintainability.
 
-### Setup & execution instructions.
+### Setup & execution instructions:
 
 #### 1. Setting Environment Variables
 

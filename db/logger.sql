@@ -1,0 +1,7 @@
+CREATE TABLE "Logs" (
+  "ID" SERIAL PRIMARY KEY,
+  "Level" VARCHAR(10),         -- INFO, WARN , ERROR
+  "Message" TEXT,
+  "Context" JSONB,
+  "Timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

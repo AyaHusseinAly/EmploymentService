@@ -1,6 +1,13 @@
+const Logger = require('../core/logger');
+
 // Global error handler middleware
 function errorHandler(err, req, res, next) {
-    console.error(err.stack);
+    Logger.log('ERROR', err.message, {
+        path: req.path,
+        method: req.method,
+        body: req.body,
+        stack: err.stack
+    });
 
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
