@@ -31,4 +31,4 @@ npm start
 Run the SQL files `./db/schema.sql` and `./db/seed.sql` to initialize the database.
 
 
-then import the provided Postman Collection and test the end point for different cases
+then import the provided Postman Collection `GetEmpStatus.postman_collection.json` and test the end point for different cases
