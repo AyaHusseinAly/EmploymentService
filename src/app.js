@@ -5,6 +5,7 @@ const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const empRoutes = require('./routes/employee.routes');
 const errorHandler = require('./middlewares/errorHandler');
+const authMiddleware = require('./middlewares/authMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,7 +24,7 @@ app.use(limiter);
 
 // parsing payload
 app.use(express.json());
-app.use('/api', empRoutes);
+app.use('/api', authMiddleware, empRoutes);
 
 // global error handler
 app.use(errorHandler);
