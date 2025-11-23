@@ -1,7 +1,12 @@
 ## Employee Status and Salary Statistics Web Service
 This project provides an API endpoint to retrieve employee information and salary statistics.  
+### Description of the architecture.
+Modular Node.js structure with separation of concerns routes, controllers, core logic, models, config, and middlewares.
+project is designed for scalability, and maintainability.
 
-### 1. Setting Environment Variables
+### Setup & execution instructions.
+
+#### 1. Setting Environment Variables
 
 Create a `.env` file in the project root with the following variables:
 
@@ -13,21 +18,21 @@ Create a `.env` file in the project root with the following variables:
 - DB_DIALECT=postgres
 - NODE_ENV=development
 
-### 2. Setup & Execution Instructions
+#### 2. Setup & Execution Instructions
 
-#### Prerequisites
+##### Prerequisites
 - Node.js (v16+ recommended)
 - npm or yarn
 - PostgreSQL database running with the above credentials
 
-#### Installation & Running the Server
+##### Installation & Running the Server
 ```bash
 git clone <repo-url>
 cd <project-folder>
 npm install
 npm start
 ```
-### 3. Database Setup
+#### 3. Database Setup
 Run the SQL files `./db/schema.sql` and `./db/seed.sql` to initialize the database.
 
 
